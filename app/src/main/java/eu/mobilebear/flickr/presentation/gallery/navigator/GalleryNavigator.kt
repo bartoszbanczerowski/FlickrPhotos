@@ -9,6 +9,7 @@ class GalleryNavigator @Inject constructor(private val context: Context) {
 
     fun goToPhotoUrl(mediaUrl: String) {
         val webIntent = Intent(Intent.ACTION_VIEW, Uri.parse(mediaUrl))
+        webIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         context.startActivity(webIntent)
     }
 

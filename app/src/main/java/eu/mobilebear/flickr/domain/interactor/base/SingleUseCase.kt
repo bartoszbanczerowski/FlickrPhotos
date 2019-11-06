@@ -1,7 +1,7 @@
 package eu.mobilebear.flickr.domain.interactor.base
 
-import com.stepstone.base.util.rx.EmptySingleObserver
-import eu.mobilebear.babylon.rx.RxFactory
+import eu.mobilebear.flickr.rx.EmptySingleObserver
+import eu.mobilebear.flickr.rx.RxFactory
 import io.reactivex.Single
 import io.reactivex.observers.DisposableSingleObserver
 
@@ -32,8 +32,8 @@ abstract class SingleUseCase<Results, in Params>(
      * @param params Parameters (Optional) used to build/execute this use case.
      */
     fun execute(
-        observer: DisposableSingleObserver<Results> = EmptySingleObserver(),
-        params: Params? = null
+            observer: DisposableSingleObserver<Results> = EmptySingleObserver(),
+            params: Params? = null
     ) {
         val single = buildUseCaseSingleWithSchedulers(params)
         addDisposable(single.subscribeWith(observer))

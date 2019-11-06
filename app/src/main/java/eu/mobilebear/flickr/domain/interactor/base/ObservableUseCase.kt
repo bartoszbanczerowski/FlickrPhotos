@@ -15,8 +15,8 @@
  */
 package eu.mobilebear.flickr.domain.interactor.base
 
-import eu.mobilebear.babylon.rx.EmptyObserver
-import eu.mobilebear.babylon.rx.RxFactory
+import eu.mobilebear.flickr.rx.EmptyObserver
+import eu.mobilebear.flickr.rx.RxFactory
 import io.reactivex.Observable
 import io.reactivex.observers.DisposableObserver
 
@@ -47,8 +47,8 @@ abstract class ObservableUseCase<Results, in Params>(
      * @param params Parameters (Optional) used to build/execute this use case.
      */
     fun execute(
-        observer: DisposableObserver<Results> = EmptyObserver<Results>(),
-        params: Params? = null
+            observer: DisposableObserver<Results> = EmptyObserver<Results>(),
+            params: Params? = null
     ) {
         val observable = buildUseCaseObservableWithSchedulers(params)
         addDisposable(observable.subscribeWith(observer))

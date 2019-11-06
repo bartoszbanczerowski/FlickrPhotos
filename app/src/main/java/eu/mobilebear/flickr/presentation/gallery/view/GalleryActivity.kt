@@ -70,7 +70,7 @@ class GalleryActivity : DaggerAppCompatActivity(), PhotoModelOnClickListener {
     private fun updateViewForSuccessNetworkStatus(screenState: ScreenState) {
         hideLoadingView()
         sortSwitch.visibility = View.VISIBLE
-        postsAdapter.submitList(screenState.posts)
+        postsAdapter.submitList(screenState.photos)
     }
 
     private fun updateViewForRunningNetworkStatus() {

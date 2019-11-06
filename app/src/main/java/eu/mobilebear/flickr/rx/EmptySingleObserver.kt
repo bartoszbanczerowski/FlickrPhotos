@@ -1,4 +1,4 @@
-package com.stepstone.base.util.rx
+package eu.mobilebear.flickr.rx
 
 import io.reactivex.observers.DisposableSingleObserver
 

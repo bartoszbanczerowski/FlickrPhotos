@@ -1,7 +1,7 @@
 package eu.mobilebear.flickr.domain.interactor.base
 
 import androidx.annotation.IntDef
-import eu.mobilebear.babylon.rx.RxFactory
+import eu.mobilebear.flickr.rx.RxFactory
 import io.reactivex.Scheduler
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable

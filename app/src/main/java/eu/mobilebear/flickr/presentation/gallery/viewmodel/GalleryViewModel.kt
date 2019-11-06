@@ -52,40 +52,40 @@ class GalleryViewModel @Inject constructor(private val getPhotosUseCase: GetPhot
         }
     }
 
-    private fun showPhotos(posts: List<PhotoModel>) {
+    private fun showPhotos(photos: List<PhotoModel>) {
         mutableScreenState.value = ScreenState(
-                posts = posts,
+                photos = photos,
                 networkStatus = NetworkStatus.Success
         )
     }
 
     private fun showNoPostsInfo() {
         mutableScreenState.value = ScreenState(
-                posts = emptyList(),
+                photos = emptyList(),
                 networkStatus = NetworkStatus.Success
         )
     }
 
     private fun showError(e: Throwable?) {
-        val posts = mutableScreenState.value?.posts
+        val photos = mutableScreenState.value?.photos
         mutableScreenState.value = ScreenState(
-                posts,
+                photos,
                 NetworkStatus.error(e)
         )
     }
 
     fun sortByDate(isChecked: Boolean) {
-            val sortedPosts = mutableScreenState.value?.posts!!
+            val sortedPhotos = mutableScreenState.value?.photos!!
                     .sortedBy { photoModel -> if(isChecked) photoModel.takenDate else photoModel.publishedDate }
                     .toList()
         mutableScreenState.value = ScreenState(
-                sortedPosts,
+                sortedPhotos,
                 networkStatus = NetworkStatus.Success
         )
     }
 
     data class ScreenState(
-            val posts: List<PhotoModel>?,
+            val photos: List<PhotoModel>?,
             val networkStatus: NetworkStatus
     )
 }

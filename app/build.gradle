@@ -95,4 +95,6 @@ dependencies {
     androidTestImplementation Libs.androidxTestRunner
     androidTestImplementation Libs.androidxEspresso
     androidTestImplementation Libs.nhaarmanMockitoKotlin
+    androidTestImplementation Libs.mockito
+    androidTestImplementation Libs.junit
 }

@@ -1,10 +1,9 @@
 package eu.mobilebear.flickr.presentation.injection.modules
 
 import android.content.Context
-import com.bumptech.glide.Glide
 import dagger.Module
 import dagger.Provides
-import eu.mobilebear.babylon.rx.RxFactory
+import eu.mobilebear.flickr.rx.RxFactory
 import eu.mobilebear.flickr.domain.interactor.GetPhotosUseCase
 import eu.mobilebear.flickr.domain.mapper.PhotoMapper
 import eu.mobilebear.flickr.domain.repository.FlickrRepository

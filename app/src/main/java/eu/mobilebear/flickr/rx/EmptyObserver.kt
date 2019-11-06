@@ -1,4 +1,4 @@
-package eu.mobilebear.babylon.rx
+package eu.mobilebear.flickr.rx
 
 import io.reactivex.annotations.NonNull
 import io.reactivex.observers.DisposableObserver

@@ -1,6 +1,6 @@
 package eu.mobilebear.flickr.domain.interactor
 
-import eu.mobilebear.babylon.rx.RxFactory
+import eu.mobilebear.flickr.rx.RxFactory
 import eu.mobilebear.flickr.domain.interactor.base.SingleUseCase
 import eu.mobilebear.flickr.domain.model.PhotosValidationAction
 import eu.mobilebear.flickr.domain.model.PhotosValidationModel

@@ -1,0 +1,98 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'io.fabric'
+
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath "io.fabric.tools:gradle:$fabricGradleVersion"
+    }
+}
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "eu.mobilebear.flickr"
+        minSdkVersion 23
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+}
+
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == "androidx") {
+            if (!requested.name.startsWith("multidex")) {
+                details.useVersion "${targetSdk}.+"
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation Libs.kotlin
+    implementation Libs.androidxAppCompat
+    implementation Libs.androidxCore
+    implementation Libs.constraintLayout
+    implementation Libs.androidMaterial
+    implementation Libs.androidxMotionLayout
+
+    implementation Libs.dagger
+    kapt Libs.daggerCompiler
+    implementation Libs.daggerAndroid
+    implementation Libs.daggerAndroidSupport
+    kapt Libs.daggerAndroidProcessor
+
+    implementation Libs.rxKotlin
+    implementation Libs.rxAndroid
+
+    implementation Libs.retrofit
+    implementation Libs.retrofitMoshiConverter
+    implementation Libs.retrofitRxJavaAdapter
+    implementation Libs.okHttp3
+    implementation Libs.okHttp3LoggingInterceptor
+    implementation Libs.moshiKotlin
+    kapt Libs.moshiKotlinCodeGen
+    implementation Libs.moshiAdapters
+
+    implementation Libs.picasso
+    implementation Libs.glide
+    implementation Libs.glideOkhttpIntegration
+    implementation Libs.timber
+    implementation Libs.lottie
+
+    implementation(Libs.crashlytics) {
+        transitive = true;
+    }
+
+    testImplementation Libs.mockito
+    testImplementation Libs.junit
+    testImplementation Libs.nhaarmanMockitoKotlin
+    testImplementation Libs.architectureTesting
+    androidTestImplementation Libs.androidxTestRunner
+    androidTestImplementation Libs.androidxEspresso
+    androidTestImplementation Libs.nhaarmanMockitoKotlin
+}
